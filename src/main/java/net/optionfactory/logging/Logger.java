@@ -1,4 +1,5 @@
 package net.optionfactory.logging;
+
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 import org.slf4j.LoggerFactory;
@@ -113,6 +114,18 @@ public class Logger {
         if (inner.isErrorEnabled()) {
             final Object[] params = Stream.of(suppliers).map(s -> s.get()).toArray();
             inner.log(NO_MARKER, LOGGER_FQCN, LocationAwareLogger.ERROR_INT, String.format(template, params), NO_PARAMS, NO_THROWABLE);
+        }
+    }
+
+    public void ifDebugEnabled(Runnable closure) {
+        if (inner.isDebugEnabled()) {
+            closure.run();
+        }
+    }
+
+    public void ifTraceEnabled(Runnable closure) {
+        if (inner.isTraceEnabled()) {
+            closure.run();
         }
     }
 
