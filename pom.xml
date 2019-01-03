@@ -27,4 +27,14 @@
             <version>1.7.22</version>
         </dependency>
     </dependencies>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus</id>
+            <url>${env.NEXUS_SNAPSHOTS_URL}</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus</id>
+            <url>${env.NEXUS_RELEASES_URL}</url>
+        </repository>
+    </distributionManagement>
 </project>
